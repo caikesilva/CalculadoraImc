@@ -36,39 +36,10 @@ const TextoSimpes = styled.Text`
   color: #C3C0C0;
   font-size: 25px;
 `
-
-const TextoResultadoMagreza = styled.Text`
+const TextoResultado = styled.Text`
   font-family: 'Times New Roman';
   font-weight: normal;
-  color: red;
-  font-size: 50px;
-`
-
-const TextoResultadoNormal = styled.Text`
-  font-family: 'Times New Roman';
-  font-weight: normal;
-  color: green;
-  font-size: 50px;
-`
-
-const TextoResultadoSobrepeso = styled.Text`
-  font-family: 'Times New Roman';
-  font-weight: normal;
-  color: yellow;
-  font-size: 50px;
-`
-
-const TextoResultadoObesidade = styled.Text`
-  font-family: 'Times New Roman';
-  font-weight: normal;
-  color: orange;
-  font-size: 50px;
-`
-
-const TextoResultadoObesidadeGrave = styled.Text`
-  font-family: 'Times New Roman';
-  font-weight: normal;
-  color: black;
+  color: ${(props) => props.cor};
   font-size: 50px;
   text-align: center;
 `
@@ -119,17 +90,17 @@ export default () => {
       <Espaco/>
       <Botao title="Calcular" onPress={() => alteraResultado(parseFloat(peso) / Math.pow(parseFloat(altura), 2))}/>
       <Espaco/>
-      {resultado > 0 && <TextoLabel>Resultado</TextoLabel>}
+      {resultado > 0 &&<TextoLabel>Resultado</TextoLabel>}
       <Espaco/>    
       { resultado > 0 &&
         <AreaResultado>
           <TextoSimpes>Você está com </TextoSimpes>
           <Espaco/>
-          {resultado < 18.5 && <TextoResultadoMagreza>Magreza</TextoResultadoMagreza>}
-          {resultado > 18.5 && resultado < 24.9 && <TextoResultadoNormal>Peso Normal</TextoResultadoNormal>} 
-          {resultado > 24.9 && resultado < 29.9 && <TextoResultadoSobrepeso>Sobrepeso</TextoResultadoSobrepeso>}
-          {resultado > 29.9 && resultado < 39.9 && <TextoResultadoObesidade>Obesidade</TextoResultadoObesidade>}                       
-          {resultado > 39.9 && <TextoResultadoObesidadeGrave>Obesidade Grave</TextoResultadoObesidadeGrave>}
+          {resultado < 18.5 && <TextoResultado cor="red">Magreza</TextoResultado>}
+          {resultado > 18.5 && resultado < 24.9 && <TextoResultado cor="green">Peso Normal</TextoResultado>} 
+          {resultado > 24.9 && resultado < 29.9 && <TextoResultado cor="yellow">Sobrepeso</TextoResultado>}
+          {resultado > 29.9 && resultado < 39.9 && <TextoResultado cor="orange">Obesidade</TextoResultado>}                       
+          {resultado > 39.9 && <TextoResultado cor="black">Obesidade Grave</TextoResultado>}
           <Espaco/>
           <TextoSimpes>IMC</TextoSimpes>
           <Espaco/>
